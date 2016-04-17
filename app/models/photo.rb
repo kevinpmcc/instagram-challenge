@@ -1,6 +1,7 @@
 class Photo < ActiveRecord::Base
+  acts_as_commentable
   belongs_to :user
-  
+
   has_many :likes,
     -> { extending WithUserAssociationExtension },
     dependent: :destroy

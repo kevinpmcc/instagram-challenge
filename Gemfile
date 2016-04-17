@@ -35,6 +35,7 @@ gem 'aws-sdk', '<2.0'
 gem 'shoulda'
 gem 'devise'
 gem 'pry-nav'
+gem 'acts_as_commentable'
 
 gem 'dotenv-rails', :groups => [:development, :test]
 # Use Capistrano for deployment
