@@ -3,11 +3,14 @@
     %h5= photo.caption
     = image_tag photo.image.url(:medium)
     %p= pluralize photo.likes.count, 'like'
-    = link_to 'Like photo', photo_likes_url(photo), method: :post
-    - if current_user && photo.user_id == current_user.id 
-      = link_to 'Delete photo', photo_path(photo), method: :delete
-    %h3= '********************'
+    - if current_user
+      = link_to 'Like photo', photo_likes_url(photo), method: :post
+      = form_for photo_comments_url(photo) do |f|
+        = f.text_field :comment
+        = f.submit
+      - if photo.user_id == current_user.id 
+        = link_to 'Delete photo', photo_path(photo), method: :delete
+      %h3= '********************'
 - else
   %h1 No photos yet!
-
 %a(href='/photos/new') Add a photo
